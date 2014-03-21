@@ -1,0 +1,46 @@
+{%extends "base.html"%}
+  {%block title%}Paste History{%endblock%}
+  {%block content%}
+  
+  
+
+{% if p %}
+
+
+<table class="table table-bordered">
+  <tr>
+        <th>Title</th>
+        <th>URL</th>
+        <th>Created On</th>
+    </tr>
+    {% for i in p %}
+    <tr class="success">
+        <td>{{i.title}}</td>
+        <td><a href="http://{{url}}/{{i.url}}">{{i.url}}</a></td>
+        <td>{{i.created_on}}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+
+{%else%}
+{%if error%}
+<p class="text-danger" align="center">{{error}}</p>
+{%else%}
+
+<p class="text-danger" align="center">You have not made any paste</p>
+{%endif%}
+
+{%endif%}
+
+
+
+
+
+{%endblock%}
+
+
+
+
+
+

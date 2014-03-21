@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+{%block title%}Search Results{%endblock%}
+{%block content %}
+{% if error %}
+<p class="text-danger" align="center">{{error}}</p>
+
+{%else%}
+<p>You searched for "{{query}}"</p>
+<table class="table table-bordered">
+  <tr>
+        <th>Title</th>
+        <th>URL</th>
+        <th>Created On</th>
+    </tr>
+    {% for i in paste %}
+    <tr class="success">
+        <td>{{i.title}}</td>
+        <td><a href="http://{{url}}/{{i.url}}">{{i.url}}</a></td>
+        <td>{{i.created_on}}</td>
+    </tr>
+    {%endfor%}
+</table>
+{%endif%}
+{%endblock%}

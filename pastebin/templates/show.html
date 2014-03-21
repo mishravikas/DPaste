@@ -1,0 +1,13 @@
+
+{%extends "base.html"%}
+
+{%block title%}Your Paste{%endblock%}
+{%block content %}
+
+{% if addr %}
+<h1><p align="center">Your Paste is at</p><p class="text-danger" align="center">{{addr}}</p></h1>
+{% endif%}
+{% if error %}
+<p class="text-danger" align="center">{{error}}</p>
+{% endif %}
+{%endblock%}

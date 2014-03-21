@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Django Powered Pastebin">
+    <meta name="author" content="Vikas Mishra">
+    
+
+    <title>{%block title%}{%endblock%} VIKAS MISHRA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  <div class="container">
+  <nav class="navbar navbar-default" role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">DPaste</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+
+      
+      <li><a href="/">Paste</a></li>
+      
+      
+    </ul>
+    <form class="navbar-form navbar-left" role="search" method="post" action="/paste/search/">
+     {%csrf_token%}
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="query">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      {%if user.is_authenticated%}
+      
+      <li><a href="/userhistory/"><u><b> {{ user.username}}</b></u> Paste History</a></li>
+      <li><a href="/account/logout">Logout</a></li>
+      {%else%}
+
+      <form class="navbar-form navbar-left" action="/account/login" method="post">
+      {%csrf_token%}
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" name="username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" name="password">
+      </div>
+      <button type="submit" class="btn btn-default">Login</button>
+      </form>
+      <li><a href="/account/register">Register</a></li>
+
+      {%endif%}
+      
+    
+      
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+  </div>
+  
+
+    {% block content %}
+    {%endblock%}
+
+
+   
+    
+  </body>
+  <div id="footer">
+<footer>Developed by Vikas Mishra</footer>
+</div>
+</html>
